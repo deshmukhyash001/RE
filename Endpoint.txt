@@ -1,5 +1,44 @@
 1. Authantication 
 -> Login, Signup, OTP(Forgot password).
 
+
+USER ACCESSES 
+1. Admin,
+2. Employees
+- > Manager 
+    Sales Person
+    Broker
+    Receptionist
+    AI Agent
+    etc.
+3. Channle Partners
+
+
 2. Dashbord 
-- > Leads 
+- > Leads Count
+    Filteration Attributes - Active Deals(Deal in progress), 1
+                             booking done, 1
+                             Hot , 2
+                             Warm , 2
+                             Cold , 2
+                             ------------
+                             Site visited 1
+                             Not reached 1
+                             Contacted 3
+                             Follow Ups BOOL 3
+                             Platform 4
+
+3. Employee 
+- > Managed Leads, Activity 
+    Activity Attributes - > Call 1, Meet 1, Message 1, Property Visited 2.
+    Ativity logger logs EmpID - UserID 
+
+4. 
+
+    
+    
+                    
+
+
+
+
