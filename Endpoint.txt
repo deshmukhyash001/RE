@@ -1,0 +1,5 @@
+1. Authantication 
+-> Login, Signup, OTP(Forgot password).
+
+2. Dashbord 
+- > Leads 
