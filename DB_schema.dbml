@@ -1,0 +1,154 @@
+Table Users {
+  id int [pk]
+  name varchar
+  email varchar [unique]
+  phone varchar
+  role varchar  
+  rank int
+  dob date
+  created_at datetime
+}
+
+Table UserDocuments {
+  id int [pk]
+  user_id int
+  type varchar 
+  file_url text
+}
+
+Table Leads {
+  id int [pk]
+  name varchar
+  primary_phone varchar
+  primary_email varchar
+  budget_min int
+  budget_max int
+  source varchar
+  stage varchar  
+  category varchar 
+  assigned_to int
+  created_at datetime
+}
+
+Table LeadContacts {
+  id int [pk]
+  lead_id int
+  phone varchar
+  email varchar
+}
+
+Table Properties {
+  id int [pk]
+  title varchar
+  type varchar  
+  status varchar 
+  price int
+  address text
+  city varchar
+  state varchar
+  pincode varchar
+  created_at datetime
+}
+
+Table Projects {
+  id int [pk]
+  name varchar
+  builder_name varchar
+  location varchar
+  city varchar
+}
+
+Table PropertyProject {
+  id int [pk]
+  property_id int
+  project_id int
+}
+
+Table LeadPropertyInterest {
+  id int [pk]
+  lead_id int
+  property_id int
+  interest_level varchar
+}
+
+Table Deals {
+  id int [pk]
+  lead_id int
+  property_id int
+  assigned_agent int
+  deal_value int
+  status varchar 
+  created_at datetime
+  closed_at datetime
+}
+
+Table Visits {
+  id int [pk]
+  lead_id int
+  property_id int
+  agent_id int
+  visit_date datetime
+  feedback text
+}
+
+Table Activities {
+  id int [pk]
+  lead_id int
+  user_id int
+  type varchar  
+  notes text
+  stage varchar
+  created_at datetime
+}
+
+Table Tasks {
+  id int [pk]
+  title varchar
+  description text
+  assigned_to int
+  lead_id int
+  due_date datetime
+  status varchar
+}
+
+Table Documents {
+  id int [pk]
+  lead_id int
+  deal_id int
+  file_url text
+  type varchar
+}
+
+Table Commissions {
+  id int [pk]
+  deal_id int
+  agent_id int
+  amount int
+  status varchar
+}
+
+
+Ref: Users.id < Leads.assigned_to
+Ref: Users.id < Activities.user_id
+Ref: Users.id < Visits.agent_id
+Ref: Users.id < Deals.assigned_agent
+
+Ref: Leads.id < Activities.lead_id
+Ref: Leads.id < Visits.lead_id
+Ref: Leads.id < Deals.lead_id
+Ref: Leads.id < Tasks.lead_id
+
+Ref: Properties.id < Visits.property_id
+Ref: Properties.id < Deals.property_id
+
+Ref: Leads.id < LeadContacts.lead_id
+Ref: Leads.id < LeadPropertyInterest.lead_id
+Ref: Properties.id < LeadPropertyInterest.property_id
+
+Ref: Deals.id < Documents.deal_id
+Ref: Leads.id < Documents.lead_id
+
+Ref: Deals.id < Commissions.deal_id
+Ref: Users.id < Commissions.agent_id
+
+Ref: Users.id < UserDocuments.user_id
